@@ -1,5 +1,5 @@
 class Config:
-    DB_HOST = "127.0.0.1"
+    DB_HOST = "amvera-bexslay-cnpg-flaskdb-rw"
     DB_USER = "bexy"
     DB_PASSWORD = "Beka2007"
     DB_NAME = "sadik"
