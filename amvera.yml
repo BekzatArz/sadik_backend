@@ -1,0 +1,11 @@
+meta: 
+  enviroment: python
+  toolchain:
+    name: pip
+    version: 3.10.10
+build:
+  requirementsPath: requirement.txt
+run:
+  command: gunicorn --bind 0.0.0.0:80 run:run
+  persistenceMount: /data
+  containerPort: 80
