@@ -8,7 +8,6 @@ build:
   requirementsPath: requirements.txt
 run:
   command: |
-    flask db init && \
     flask db migrate && \
     flask db upgrade && \
     gunicorn --bind 0.0.0.0:80 run:app
