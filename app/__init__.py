@@ -2,6 +2,7 @@ from flask import Flask
 from app.extensions import db, migrate
 from flask_cors import CORS
 from app.routes import register_routes
+from app.models import User, Admin, Comment, Educator, Image, Event
 import logging
 
 def create_app():
