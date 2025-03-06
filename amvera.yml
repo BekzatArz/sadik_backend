@@ -8,6 +8,6 @@ build:
   requirementsPath: requirements.txt
 run:
   command:
-    gunicorn --bind 0.0.0.0:80 run:app
+    bash -c "flask db init && flask db migrate -m 'add migration' && flask db upgrade && gunicorn --bind 0.0.0.0:80 run:app"
   persistenceMount: /data
   containerPort: 80
