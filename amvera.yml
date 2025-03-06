@@ -7,9 +7,7 @@ meta:
 build:
   requirementsPath: requirements.txt
 run:
-  command: |
-    flask db migrate -m "add comm" && \
-    flask db upgrade && \
+  command:
     gunicorn --bind 0.0.0.0:80 run:app
   persistenceMount: /data
   containerPort: 80

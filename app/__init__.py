@@ -17,9 +17,9 @@ def create_app():
     CORS(app, origins=cors_origins, supports_credentials=True)
 
     db.init_app(app)
+    register_routes(app)
     migrate.init_app(app, db)
 
-    register_routes(app)
     return app
     
 logging.basicConfig()
