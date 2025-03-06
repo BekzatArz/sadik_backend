@@ -11,11 +11,11 @@ def create_app():
     cors_origins = [
         'http://localhost:5173',
         'http://192.168.144.22:5173',
-        'http://192.168.1.121:5000',
+        'http://192.168.1.124:5173',
         'http://26.249.250.5:5173',
     ]
     CORS(app, origins=cors_origins, supports_credentials=True)
-    
+
     db.init_app(app)
     migrate.init_app(app, db)
 
