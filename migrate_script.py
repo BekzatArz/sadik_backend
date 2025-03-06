@@ -11,6 +11,8 @@ def run_migrations():
         # Проверяем, есть ли директория "migrations", если нет — инициализируем Alembic
         if not os.path.exists("migrations"):
             init()
+            
+        subprocess.run(["flask", "db", "upgrade"], check=True)
 
         # Создаём новую миграцию
         # Важно не передавать сообщение напрямую через migrate, используем команду для миграции
