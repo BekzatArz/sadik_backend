@@ -1,6 +1,8 @@
 import os
-from run import app
+from app import create_app
 from flask_migrate import upgrade, migrate, init
+
+app = create_app()
 
 def run_migrations():
     with app.app_context():
