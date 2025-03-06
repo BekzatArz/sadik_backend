@@ -1,3 +1,4 @@
+
 meta:
   environment: python
   toolchain:
@@ -6,6 +7,9 @@ meta:
 build:
   requirementsPath: requirements.txt
 run:
-  command: bash -c "export FLASK_APP=run.py && flask db init && flask db migrate -m 'add migration' && flask db upgrade && gunicorn --bind 0.0.0.0:80 run:app"
+  command: |
+    flask db migrate -m "add comm" && \
+    flask db upgrade && \
+    gunicorn --bind 0.0.0.0:80 run:app
   persistenceMount: /data
   containerPort: 80
