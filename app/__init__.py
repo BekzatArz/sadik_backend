@@ -4,11 +4,12 @@ from flask_cors import CORS
 from app.routes import register_routes
 from app.models import User, Admin, Comment, Educator, Image, Event
 import logging
+import os
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object('app.config.Config')
-
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
     cors_origins = [
         'http://localhost:5173',
         'http://192.168.144.22:5173',
