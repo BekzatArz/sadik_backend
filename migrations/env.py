@@ -26,11 +26,15 @@ def get_engine():
 
 def get_engine_url():
     try:
-        return get_engine().url.render_as_string(hide_password=False).replace(
-            '%', '%%')
-    except AttributeError:
-        return str(get_engine().url).replace('%', '%%')
-
+        engine = get_engine()
+        if hasattr(engine, 'url'):
+            return engine.url.render_as_string(hide_password=False).replace('%', '%%')
+        else:
+            logger.error('Engine does not have the attribute "url"')
+            return str(engine).replace('%', '%%')
+    except Exception as e:
+        logger.error(f"Error while getting engine URL: {e}")
+        return ""
 
 # add your model's MetaData object here
 # for 'autogenerate' support
