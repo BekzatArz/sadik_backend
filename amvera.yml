@@ -1,4 +1,5 @@
-
+---
+version: null
 meta:
   environment: python
   toolchain:
@@ -7,7 +8,6 @@ meta:
 build:
   requirementsPath: requirements.txt
 run:
-  command:
-    gunicorn --bind 0.0.0.0:5000 run:app
+  command: gunicorn --bind 0.0.0.0:5000 run:app
   persistenceMount: /data
   containerPort: 5000
