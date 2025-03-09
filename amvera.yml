@@ -8,6 +8,6 @@ meta:
 build:
   requirementsPath: requirements.txt
 run:
-  command: rm -rf migrations/ && flask db init && flask db stamp head && flask db migrate -m "Auto migration" && flask db upgrade && gunicorn --bind 0.0.0.0:5000 run:app
+  command: rm -rf migrations/ && flask db init && flask db migrate -m "Auto migration" && flask db stamp head && flask db upgrade && gunicorn --bind 0.0.0.0:5000 run:app
   persistenceMount: /data
   containerPort: 5000
