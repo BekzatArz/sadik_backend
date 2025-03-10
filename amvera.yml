@@ -1,8 +1,4 @@
----
-version: null
-meta:
-  environment: python
----
+
 version: null
 meta:
   environment: python
@@ -12,8 +8,7 @@ meta:
 build:
   requirementsPath: requirements.txt
 run:
-  command: flask db stamp head && flask db migrate -m "Auto migration" && flask db upgrade
-    && gunicorn --bind 0.0.0.0:5000 run:app
+  command: flask db stamp head && flask db migrate -m "Auto migration" && flask db upgrade && gunicorn --bind 0.0.0.0:5000 run:app
   persistenceMount: /data
   containerPort: 80
 
