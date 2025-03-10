@@ -9,10 +9,6 @@ build:
   requirementsPath: requirements.txt
 run:
   command: |
-    echo "Removing migrations folder" && 
-    rm -rf migrations/ && 
-    echo "Initializing migrations" &&
-    flask db init &&
     echo "Stamping head" && 
     flask db stamp head && 
     echo "Creating migrations" && 
