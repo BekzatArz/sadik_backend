@@ -8,6 +8,6 @@ meta:
 build:
   requirementsPath: requirements.txt
 run:
-  command: echo "Getting pods in amvera-users namespace" && kubectl get pods -n amvera-users && echo "Stamping head" && flask db stamp head && echo "Creating migrations" && flask db migrate -m "Auto migration" && echo "Upgrading database" && flask db upgrade && echo "Starting Gunicorn" && gunicorn --bind 0.0.0.0:5000 run:app
+  command: echo "Gettingт pods in amvera-users namespace" && kubectl get pods -n amvera-users && echo "Stamping head" && flask db stamp head && echo "Creating migrations" && flask db migrate -m "Auto migration" && echo "Upgrading database" && flask db upgrade && echo "Starting Gunicorn" && gunicorn --bind 0.0.0.0:5000 run:app
   persistenceMount: /data
   containerPort: 80
