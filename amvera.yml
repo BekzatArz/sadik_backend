@@ -9,20 +9,17 @@ build:
   requirementsPath: requirements.txt
 run:
   command: |
-    echo "Checking if migrations directory exists"
-    if [ ! -d "migrations" ]; then
-        echo "Initializing migrations"
-        flask db init
-    else
-        echo "Migrations directory already exists"
-    fi
-    echo "Stamping head"
-    flask db stamp head
-    echo "Creating migrations"
-    flask db migrate -m "Auto migration"
-    echo "Upgrading database"
-    flask db upgrade
-    echo "Starting Gunicorn"
+    echo "Removing migrations folder" && \
+    rm -rf migrations/ && \
+    echo "Initializing migrations" && \
+    flask db init && \
+    echo "Stamping head" && \
+    flask db stamp head && \
+    echo "Creating migrations" && \
+    flask db migrate -m "Auto migration" && \
+    echo "Upgrading database" && \
+    flask db upgrade && \
+    echo "Starting Gunicorn" && \
     gunicorn --bind 0.0.0.0:5000 run:app
   persistenceMount: /data
   containerPort: 80
