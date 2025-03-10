@@ -8,7 +8,18 @@ meta:
 build:
   requirementsPath: requirements.txt
 run:
-  command: rm -rf migrations/ && flask db init && flask db stamp head && flask db migrate -m "Auto migration" && flask db upgrade && gunicorn --bind 0.0.0.0:5000 run:app
+  command: |
+    echo "Removing migrations folder"
+    rm -rf migrations/
+    echo "Initializing migrations"
+    flask db init
+    echo "Stamping head"
+    flask db stamp head
+    echo "Creating migrations"
+    flask db migrate -m "Auto migration"
+    echo "Upgrading database"
+    flask db upgrade
+    echo "Starting Gunicorn"
+    gunicorn --bind 0.0.0.0:5000 run:app
   persistenceMount: /data
   containerPort: 80
-
