@@ -9,10 +9,13 @@ build:
   requirementsPath: requirements.txt
 run:
   command: |
-    echo "Removing migrations folder"
-    rm -rf migrations/
-    echo "Initializing migrations"
-    flask db init
+    echo "Checking if migrations directory exists"
+    if [ ! -d "migrations" ]; then
+        echo "Initializing migrations"
+        flask db init
+    else
+        echo "Migrations directory already exists"
+    fi
     echo "Stamping head"
     flask db stamp head
     echo "Creating migrations"
