@@ -6,6 +6,7 @@ def get_server_version():
         conn = connection_manager.connect()
         with conn.cursor() as cursor:
             cursor.execute("SELECT version();")
+            print('Hello i come!')
             return cursor.fetchone()
     except Exception as ex:
         print("[ERROR] Error while executing query:", ex)
